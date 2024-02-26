@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RecicLA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .contenidor-amarillo { background-color: #ffcc00; }
+    .contenidor-azul { background-color: #3399cc; }
+    .contenidor-verd { background-color: #66cc33; }
+    .contenidor-marro { background-color: #996633; }
+    .contenidor-gris { background-color: #808080; }
+
+    .boton {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    .boton:hover {
+      background-color: #2980b9;
+    }
+
+    .boton-volver {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .boton-volver:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>RecicLA</h1>
+  <input type="text" id="residuInput" placeholder="Introdueix el nom del residu">
+  <button onclick="mostrarResposta()" class="boton">Cerca</button>
+  <p id="resposta"></p>
+
+  <a href="https://ef106872-3a82-42e3-a731-3b3ec2b11dca-00-3qw6yp1hn61m9.janeway.repl.co/" class="boton-volver">Torna a l'Inici</a>
+
+  <script>
+    function mostrarResposta() {
+      const residuInput = document.getElementById('residuInput');
+      const resposta = document.getElementById('resposta');
+
+      const residu = residuInput.value.toLowerCase();
+
+      if (residu.includes('plàstic') || residu.includes('envasos') || residu.includes('llesques d\'alumini') || residu.includes('aerosols') || residu.includes('botes de desodorant')) {
+        resposta.innerText = 'Aquest residu va al Contenidor Groc.';
+        resposta.className = 'contenidor-amarillo';
+      } else if (residu.includes('cartó') || residu.includes('paper') || residu.includes('caixes de cartó')||residu.includes('cartro')) {
+        resposta.innerText = 'Aquest residu va al Contenidor Blau.';
+        resposta.className = 'contenidor-azul';
+      } else if (residu.includes('vidre') || residu.includes('ampolles de vidre') || residu.includes('gerros d\'aliments')) {
+        resposta.innerText = 'Aquest residu va al Contenidor Verd.';
+        resposta.className = 'contenidor-verd';
+      } else if (residu.includes('orgànic') || residu.includes('restes d\'aliments') || residu.includes('escorça') || residu.includes('posos') || residu.includes('pell') || residu.includes('pells de verdura')) {
+        resposta.innerText = 'Aquest residu va al Contenidor Marró (Orgànic).';
+        resposta.className = 'contenidor-marro';
+      } else if (residu.includes('electrònic') || residu.includes('electrodomèstics') ||residu.includes('electronic') ) {
+        resposta.innerHTML = 'No hi ha un contenidor específic per a electrodomèstics. Podeu portar-los al punt de deixalleria i consultar l\'horari a <a href="https://puntoslimpios.info/deixalleria-vilafranca-del-penedes/">la seguent pàgina web</a>.';
+        resposta.className = '';
+      } else {
+        resposta.innerText = 'Aquest residu no esta a la nostra base de dades pero va al Contenidor Gris (Restes) o al contanidor taronje que es de roba.';
+        resposta.className = 'contenidor-gris';
+      }
+    }
+  </script>
+</body>
+</html>
